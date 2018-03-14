@@ -38,7 +38,7 @@ function findLongestWord(str) {
 findLongestWord("The quick brown fox jumped over the lazy dog");
 
 
-//5. Title Case a Sentence 
+//5. Title Case a Sentence
 
 function titleCase(str) {
   var arr = str.toLowerCase().split(' '), i;
@@ -49,3 +49,21 @@ function titleCase(str) {
 }
 
 titleCase("I'm a little tea pot");
+
+//6. Return Largest Numbers in Arrays
+
+function largestOfFour(arr) {
+  var i, maxArr = [], subMax;
+  for(i=0; i<arr.length; i+=1){
+    subMax = arr[i][0];
+    for(j=0; j < arr[i].length; j+=1){
+      if (arr[i][j] > subMax){
+        subMax = arr[i][j];
+      }
+    }
+    maxArr[i] = subMax;
+  }
+  return maxArr;
+}
+
+largestOfFour([[13, 27, 18, 26], [4, 5, 1, 3], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
