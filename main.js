@@ -129,3 +129,47 @@ function slasher(arr, howMany) {
 }
 
 slasher([1, 2, 3], 2);
+
+// Дополнительная задача. Дан массив arr. Найдите среднее арифметическое его элементов. Проверьте задачу на массиве с элементами 12, 15, 20, 25, 59, 79.
+function average(arr){
+	var sum = 0, i;
+	for (i = 0; i < arr.length; i+=1){
+		sum += arr[i];
+	}
+	return sum / arr.length;
+}
+
+alert(average([12, 15, 20, 25, 59, 79]));
+//Дополнительная задача 2. Дан массив с числами. Оставьте в нем только положительные числа. Затем извлеките квадратный корень и этих чисел
+function func(arr){
+	var newArr = arr.filter(function(n){
+		return n > 0;
+	});
+	var newArr2 = newArr.map(function(n){
+		return Math.sqrt(n);
+	});
+	return newArr2;
+};
+
+alert(func([-2, 4, -5, 0, 16]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
