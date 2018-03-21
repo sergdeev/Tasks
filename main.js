@@ -114,7 +114,7 @@ truncateString("A-tisket a-tasket A green and yellow basket", 11);
 //10. Chunky Monkey
 function chunkArrayInGroups(arr, size) {
   var newArr = [], i, n=0;
-  for(i = 0; i<Math.ceil(arr.length/size); i+=1){
+  for(i = 0; i < Math.ceil(arr.length/size); i+=1){
     newArr.push(arr.slice(n,n+size));
     n+=size;
   }
@@ -154,8 +154,36 @@ function func(arr){
 alert(func([-2, 4, -5, 0, 16]));
 
 
+//Сделайте функцию, которая считает и выводит количество своих вызовов.
+function func(){
+	var counter = 1;
+	return function(){
+		return counter++;
+	}
+}
+
+var foo = func();
+
+console.log(foo());
+console.log(foo());
+console.log(foo());
+
+//Прочтитать что означает числа Фибоначчи. Написать на Javascript. Использовать цикл. Промежуток выбирайте по своему усмотрению. Также установите счетчик внутри цикла, чтобы узнать количество итераций.
 
 
+//numMax - последний элемент не должен превышать это число
+function fib(numMax){
+	var arr = [0, 1], i, n = 0;
+	for (i = 1; arr[i] < numMax; i+=1){
+		arr.push(arr[i-1] + arr[i]);
+		n++;
+	}
+	arr.pop();
+	alert(n-1);
+	return arr;
+}
+
+alert(fib(145));
 
 
 
