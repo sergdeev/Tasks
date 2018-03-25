@@ -61,7 +61,7 @@ titleCase("I'm a little tea pot");
 //6. Return Largest Numbers in Arrays
 
 function largestOfFour(arr) {
-  var i, maxArr = [], subMax;
+  var j, i, maxArr = [], subMax;
   for(i=0; i<arr.length; i+=1){
     subMax = arr[i][0];
     for(j=0; j < arr[i].length; j+=1){
@@ -76,15 +76,34 @@ function largestOfFour(arr) {
 
 largestOfFour([[13, 27, 18, 26], [4, 5, 1, 3], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
 
+
+//map
+function foo(arr) {
+  var newArr = [];
+  arr.map(function (el)) {
+    newArr.push(Math.max.apply(Math, el));
+  });
+  return newArr;
+}
+
+foo([[13, 27, 18, 26], [4, 5, 1, 3], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+
 //7. Confirm the Ending
 
 function confirmEnding(str, target) {
   var quan = target.length;
-  return str.slice(-quan)===target;
+  return str.slice(-quan) === target;
 }
 
 confirmEnding("Bastian", "n");
 
+//Or
+function confirmEnding(str, target) {
+  return str.substring(str.length - target.length) === target;
+}
+
+confirmEnding("Bastian", "n");
 
 //8. Repeat a string repeat a string
 function repeatStringNumTimes(str, num) {
@@ -93,6 +112,12 @@ function repeatStringNumTimes(str, num) {
     str2 += str;
   }
   return str2;
+}
+
+repeatStringNumTimes("abc", 3);
+//Or
+function repeatStringNumTimes(str, num) {
+  return str.repeat(num);
 }
 
 repeatStringNumTimes("abc", 3);
@@ -185,8 +210,45 @@ function fib(numMax){
 
 alert(fib(145));
 
+// Дан массив с числами. Проверьте то, что в нем есть отрицательные элементы.
+function isNegative(arr) {
+  return arr.some(function(n){
+	 return n < 0;
+  })
+}
+
+alert(isNegative([5, -1, 0, 4, 1]));
+
+//Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут
+
+</head>
+<body>
+	<button onclick="cloneInput()">Clone input</button>
+	<input type="text">
+</body>
+</>
+
+//js
+function cloneInput(){
+	var input = document.querySelector('input');
+	var clone = input.cloneNode(true);
+	document.body.appendChild(clone);
+}
 
 
+
+//Дан массив. Создайте ul через createElement, затем вставьте каждый элемент этого массива в отдельную li внутри этой ul, затем вставьте эту ul в конец body.
+
+(function (){
+	var arr = ['Hello', 'How', 'Are', 'You', 'Doing', '?'], size = arr.length, i;
+	var ul = document.createElement('ul');
+	document.body.appendChild(ul);
+	for(i = 0; i < size; i+=1){
+		var li = document.createElement('li');
+	li.innerHTML = arr[i];
+	ul.appendChild(li)
+	};
+})();
 
 
 
