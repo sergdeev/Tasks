@@ -250,6 +250,33 @@ function cloneInput(){
 	};
 })();
 
+//Сделайте функцию getDigitsSum (digit - это цифра), которая параметром принимает целое число и возвращает сумму его цифр.
+function getDigitsSum(num){
+	var strNum = String(num), i, sum = 0, size = strNum.length;
+	for(i = 0; i < size; i+=1){
+		sum += +strNum[i];
+	}
+	return sum;
+}
+
+getDigitsSum(52);
+
+
+//Дан массив с числами. Проверьте, есть ли в нем два одинаковых числа подряд. Если есть - выведите 'да', а если нет - выведите 'нет'
+function sameNums(arr){
+	var i, size = arr.length, answer = '';
+	for(i = 0; i < size; i+=1){
+		if (arr[i] ===arr[i+1]){
+			answer = "There is a coincidence";
+			break;
+		}
+		else answer = "No";
+	}
+	alert(answer);
+}
+
+sameNums([12, 5, 3, 57, 27]);
+sameNums([12, 5, 5, 7, 27]);
 
 
 
