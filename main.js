@@ -138,10 +138,9 @@ truncateString("A-tisket a-tasket A green and yellow basket", 11);
 
 //10. Chunky Monkey
 function chunkArrayInGroups(arr, size) {
-  var newArr = [], i, n=0;
-  for(i = 0; i < Math.ceil(arr.length/size); i+=1){
-    newArr.push(arr.slice(n,n+size));
-    n+=size;
+  var i, len  = arr.length, newArr = [];
+  for(i = 0; i < len; i+= size){
+    newArr.push(arr.slice(i, i + size));
   }
   return newArr;
 }
@@ -252,7 +251,7 @@ function cloneInput(){
 
 //Сделайте функцию getDigitsSum (digit - это цифра), которая параметром принимает целое число и возвращает сумму его цифр.
 function getDigitsSum(num){
-	var strNum = String(num), i, sum = 0, size = strNum.length;
+	var strNum = nu,.toString(), i, sum = 0, size = strNum.length;
 	for(i = 0; i < size; i+=1){
 		sum += +strNum[i];
 	}
@@ -266,7 +265,7 @@ getDigitsSum(52);
 function sameNums(arr){
 	var i, size = arr.length, answer = '';
 	for(i = 0; i < size; i+=1){
-		if (arr[i] ===arr[i+1]){
+		if (arr[i] === arr[i+1]){
 			answer = "There is a coincidence";
 			break;
 		}
@@ -277,6 +276,52 @@ function sameNums(arr){
 
 sameNums([12, 5, 3, 57, 27]);
 sameNums([12, 5, 5, 7, 27]);
+
+
+//12 Mutations
+
+function mutation(arr) {
+  var i, j,
+      first = arr[0].toLowerCase().split(''),
+      second = arr[1].toLowerCase().split(''),
+      size = second.length;
+  for(i = 0; i < size; i+=1){
+    if (first.indexOf(second[i]) === -1){
+     return false;
+   }
+  }
+    return true;
+}
+
+mutation(["hello", "hey"]);
+
+//Everything Be True
+//Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+function truthCheck(collection, pre) {
+  var i, arr = collection, size = arr.length;
+  for(i = 0; i < size; i+=1){
+    if(!collection[i][pre]){
+      return false;
+    }
+  }
+  return true;
+}
+
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+
+//13 Falsy Bouncer
+// Remove all falsy values from an array. Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+
+function bouncer(arr) {
+  var positiveArr = arr.filter(function(value) {
+    return !!value === true;
+  });
+  return positiveArr;
+}
+
+bouncer([7, "ate", "", false, 9]);
 
 
 
