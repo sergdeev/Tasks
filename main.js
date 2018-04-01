@@ -315,10 +315,9 @@ truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "ma
 // Remove all falsy values from an array. Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
 
 function bouncer(arr) {
-  var positiveArr = arr.filter(function(value) {
-    return !!value === true;
+  return arr.filter(function(value) {
+    return !!value;
   });
-  return positiveArr;
 }
 
 bouncer([7, "ate", "", false, 9]);
