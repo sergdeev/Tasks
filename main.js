@@ -343,6 +343,20 @@ function sumAll(arr) {
 sumAll([1, 4]);
 
 
+//Where do I belong
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  arr.sort(function compareNumeric(a, b) {
+  return a - b;
+});
+  return arr.indexOf(num);
+}
+
+getIndexToIns([40, 60], 50);
+
+
+
+
 //Seek and Destroy
 function destroyer(arr) {
   var args = [].slice.call(arguments).slice(1),
