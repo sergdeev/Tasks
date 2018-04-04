@@ -323,9 +323,88 @@ function bouncer(arr) {
 bouncer([7, "ate", "", false, 9]);
 
 
+//Sum All Numbers in a Range
+function sumAll(arr) {
+  var sum = 0;
+  for (i = Math.min(...arr); i<=Math.max(...arr);i+=1){
+    sum+=i;
+  }
+  return sum;
+}
+
+sumAll([1, 4]);
+//Или через арифметическую прогрессию с шагом 1
+function sumAll(arr) {
+  var min = Math.min(...arr),
+      max = Math.max(...arr);
+  return ((min + max) / 2) * (max - min + 1);
+}
+
+sumAll([1, 4]);
+
+
+//Seek and Destroy
+function destroyer(arr) {
+  var args = [].slice.call(arguments).slice(1),
+      size1 = arr.length,
+      size2 = arr.length, i, j;
+  for (i = 0; i < size1; i+=1) {
+    for (j = 0; j < size2; j+=1) {
+      if (arr[i] === args[j]) {
+        delete arr[i];
+      }
+    }
+  }
+  return arr.filter(function(value){
+    return arr[value] !== null;
+  });
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+//не работает
+function destroyer(arr) {
+  var args = [].slice.call(arguments).slice(1),
+      size = args.length, i;
+  for(i = 0;i < size;i += 1){
+    if(arr.indexOf(args[i]) !== -1){
+      arr.slice(arr.indexOf(args[i]),1);
+    }
+  }
+  return arr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 
 
 
+//Build Javascript Calculator
+function Calculator(a, b){
+	this.a = a;
+	this.b = b;
+}
+
+Calculator.prototype.sum = function(){ //summation
+	return this.a + this.b;
+}
+
+Calculator.prototype.mult = function(){ //multiplication
+	return this.a * this.b;
+}
+
+Calculator.prototype.sub = function(){ //substruction
+	return this.a - this.b;
+}
+
+Calculator.prototype.div = function(){ //division
+	return this.a / this.b;
+}
+
+var calculator = new Calculator(7, 5);
+alert(calculator.sum());
+alert(calculator.mult());
+alert(calculator.sub());
+alert(calculator.div());
 
 
 
