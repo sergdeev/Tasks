@@ -326,8 +326,8 @@ bouncer([7, "ate", "", false, 9]);
 //Sum All Numbers in a Range
 function sumAll(arr) {
   var sum = 0;
-  for (i = Math.min(...arr); i<=Math.max(...arr);i+=1){
-    sum+=i;
+  for (i = Math.min(...arr); i<=Math.max(...arr); i+=1){
+    sum += i;
   }
   return sum;
 }
@@ -346,7 +346,7 @@ sumAll([1, 4]);
 //Where do I belong
 function getIndexToIns(arr, num) {
   arr.push(num);
-  arr.sort(function compareNumeric(a, b) {
+  arr.sort(function (a, b) {
   return a - b;
 });
   return arr.indexOf(num);
@@ -359,18 +359,10 @@ getIndexToIns([40, 60], 50);
 
 //Seek and Destroy
 function destroyer(arr) {
-  var args = [].slice.call(arguments).slice(1),
-      size1 = arr.length,
-      size2 = arr.length, i, j;
-  for (i = 0; i < size1; i+=1) {
-    for (j = 0; j < size2; j+=1) {
-      if (arr[i] === args[j]) {
-        delete arr[i];
-      }
-    }
-  }
-  return arr.filter(function(value){
-    return arr[value] !== null;
+  var arrOfArgs = [].slice.call(arguments);
+
+  return arr.filter(function (elem) {
+    return !arrOfArgs.includes(elem);
   });
 }
 
@@ -419,6 +411,65 @@ alert(calculator.sum());
 alert(calculator.mult());
 alert(calculator.sub());
 alert(calculator.div());
+
+
+//Binary Agents
+function binaryAgent(str) {
+  var arr = str.split(' ');
+  return arr.map(function(elem){
+    return String.fromCharCode(parseInt(elem, 2));
+  }).join('');
+}
+
+binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+
+
+//Diff Two Arrays
+function diffArray(arr1, arr2) {
+  var newArr = [], i;
+  for (i = 0;i < arr1.length; i+=1){
+    if (arr2.indexOf(arr1[i]) === -1){
+      newArr.push(arr1[i]);
+    }
+  }
+  for (i = 0;i < arr2.length; i+=1){
+    if (arr1.indexOf(arr2[i]) === -1){
+      newArr.push(arr2[i]);
+    }
+  }
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+//Не через 2 цикла
+function diffArray(arr1, arr2) {
+  return arr1.concat(arr2).filter(function(elem){
+    return !(arr1.includes(elem) && arr2.includes(elem));
+  });
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+
+
+//Sorted Union
+function uniteUnique(arr) {
+  var args = [].slice.call(arguments).reduce(function(prev, cur){
+    cur = cur.filter(function(elem){
+      return !prev.includes(elem);
+    });
+    return prev.concat(cur);
+  });
+  return args;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+
+
+
+
 
 
 
